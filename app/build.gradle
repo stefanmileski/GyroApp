@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace 'com.example.gyroapp'
-    compileSdk 33
+    namespace 'com.stefanmileski.gyroapp'
+    compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.gyroapp"
+        applicationId "com.stefanmileski.gyroapp"
         minSdk 32
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 

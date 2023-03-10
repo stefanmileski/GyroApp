@@ -1,4 +1,4 @@
-package com.example.gyroapp;
+package com.stefanmileski.gyroapp;
 
 import org.junit.Test;
 
