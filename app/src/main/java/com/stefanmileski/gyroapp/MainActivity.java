@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void undoPresClick(View view) {
         presecheni.remove(presecheni.size() - 1);
+        updateTextFields();
     }
 
     public void undoPotrClick(View view) {
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 || potrebni.get(potrebni.size() - 1).grami == 75
                 || potrebni.get(potrebni.size() - 1).grami == 85)
             potrebni.remove(potrebni.size() - 1);
+        updateTextFields();
     }
 
     public void svLClick(View view) {

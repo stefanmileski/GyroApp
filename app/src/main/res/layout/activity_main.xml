@@ -7,6 +7,17 @@
     android:padding="40dp"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="107dp"
+        android:layout_height="42dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginRight="32dp"
+        android:text="Пилешко:"
+        app:layout_constraintBottom_toTopOf="@+id/nmbrBxPil"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <Button
         android:id="@+id/btnMixPor"
         android:layout_width="wrap_content"
@@ -160,9 +171,9 @@
         android:id="@+id/nmbrBxPil"
         android:layout_width="139dp"
         android:layout_height="51dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="number"
-        android:layout_marginBottom="20dp"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -210,17 +221,6 @@
         android:text="Свинско:"
         app:layout_constraintBottom_toTopOf="@+id/nmbrBxSv"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="91dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Пилешко:"
-        android:layout_marginRight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMixXXL" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
