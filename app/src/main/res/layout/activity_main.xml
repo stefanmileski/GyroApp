@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="40dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/parentView">
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
@@ -15,6 +16,7 @@
         android:inputType="textPersonName"
         android:layout_marginRight="32dp"
         android:text="Пилешко:"
+        android:enabled="false"
         app:layout_constraintBottom_toTopOf="@+id/nmbrBxPil"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -162,7 +164,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberSigned"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintStart_toStartOf="parent" />
@@ -173,7 +175,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberSigned"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -219,8 +221,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Свинско:"
+        android:enabled="false"
         app:layout_constraintBottom_toTopOf="@+id/nmbrBxSv"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

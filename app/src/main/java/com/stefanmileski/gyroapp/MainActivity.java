@@ -3,8 +3,9 @@ package com.stefanmileski.gyroapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -46,6 +47,25 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+        View parentView = findViewById(R.id.parentView);
+        parentView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    View view = getCurrentFocus();
+                    if (view != null && view instanceof EditText) {
+                        Rect outRect = new Rect();
+                        view.getGlobalVisibleRect(outRect);
+                        if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                            view.clearFocus();
+                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                        }
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     public void updateTextFields() {
@@ -58,17 +78,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void undoPresClick(View view) {
+        if (presecheni.size() < 1)
+            return;
         presecheni.remove(presecheni.size() - 1);
         updateTextFields();
     }
 
     public void undoPotrClick(View view) {
-        potrebni.remove(potrebni.size() - 1);
-        if (potrebni.get(potrebni.size() - 1).grami == 55
+        if (potrebni.size() >= 2 && (potrebni.get(potrebni.size() - 1).grami == 55
                 || potrebni.get(potrebni.size() - 1).grami == 40
                 || potrebni.get(potrebni.size() - 1).grami == 75
-                || potrebni.get(potrebni.size() - 1).grami == 85)
+                || potrebni.get(potrebni.size() - 1).grami == 85))
             potrebni.remove(potrebni.size() - 1);
+        if (potrebni.size() < 1)
+            return;
+        potrebni.remove(potrebni.size() - 1);
         updateTextFields();
     }
 
@@ -154,5 +178,15 @@ public class MainActivity extends AppCompatActivity {
             presecheni.add(new Gramazha(presechenoPil, TipMeso.PILESHKO));
         }
         updateTextFields();
+    }
+
+    public void resetSv(View view) {
+        potrebni.stream().filter(x -> x.tipMeso == TipMeso.SVINSKO).forEach(x -> potrebni.remove(x));
+        presecheni.stream().filter(x -> x.tipMeso == TipMeso.SVINSKO).forEach(x -> potrebni.remove(x));
+    }
+
+    public void resetPil(View view) {
+        potrebni.stream().filter(x -> x.tipMeso == TipMeso.PILESHKO).forEach(x -> potrebni.remove(x));
+        presecheni.stream().filter(x -> x.tipMeso == TipMeso.PILESHKO).forEach(x -> potrebni.remove(x));
     }
 }
